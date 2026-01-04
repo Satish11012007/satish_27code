@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 
 const Login = () => {
 
- //these es also known as the two way winding 
+ // I have do the two way winding 
+ const [email,setEmail]= useState('')
+ const [password,setPassword]= useState('')
+
   const submitHandler = (e) => {
-   e.preventDefault();   // 👈 VERY IMPORTANT
-  console.log("hello guys form will be submitted");
+   e.preventDefault();   
+  console.log("email is",email)
+  console.log("password id ",password)
+
+  setEmail('')
+  setPassword('')
   }
 
 
@@ -14,11 +21,17 @@ const Login = () => {
     <>
       <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
         <div className="border-2 border-emerald-600 p-10 rounded-2xl bg-white shadow-lg">
-          <form   
-          onSubmit={submitHandler}
+          <form 
+          onSubmit = {(e)=>{
+            submitHandler(e);
+          }}
           className="flex flex-col items-center justify-center gap-4">
             
             <input
+              value = {email}
+               onChange = {(e)=>{
+                setEmail(e.target.value);
+               }}
                required 
               className="w-72 text-black outline-none bg-transparent border-2 border-emerald-600 text-lg rounded-full py-3 px-5 placeholder:text-gray-400 focus:border-emerald-700"
               type="email"
@@ -26,6 +39,10 @@ const Login = () => {
             />
 
             <input
+            value ={password}
+            onChange ={(e)=>{
+              setPassword(e.target.value)
+            }}
               required
               className="w-72 text-black outline-none bg-transparent border-2 border-emerald-600 text-lg rounded-full py-3 px-5 placeholder:text-gray-400 focus:border-emerald-700"
               type="password"
