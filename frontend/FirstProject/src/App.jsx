@@ -22,7 +22,8 @@ const App = () => {
 
   const handleLogin = (email, password) => {
     // ✅ Admin login
-    if (email === "admin@me.com" && password === "123") {
+   
+    if (email === "emp3@example.com" && password === "123") {
       setUser("admin");
       localStorage.setItem(
         "loggedInUser",
